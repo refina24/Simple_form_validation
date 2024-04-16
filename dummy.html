@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Validation</title>
+    <style>
+        .full{
+            margin-left: 30%;
+            margin-top: 5%;
+            width: 700px;
+            color: beige;
+            /* border-style: dotted; */
+            border-color: beige;
+        }
+        .full h1{
+            text-decoration: underline;
+        }
+        body{
+            background-image: url("https://c4.wallpaperflare.com/wallpaper/871/1013/108/minimalism-red-abstract-digital-art-wallpaper-preview.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="full">
+    <form action="post" onsubmit="return validate()">
+        <h1>Club Membership Registration</h1>
+        <h4>Complete the form below to sign up for our membership service</h4>
+        <div class="input">
+            <label>Name:</label>
+            <input id="firstName" class="expand" type="text" placeholder="First Name" >
+            <input id="lastName" class="expand" type="text" placeholder="Last Name" >
+        </div>
+        <br><br>
+
+        <label>Email Id:</label>
+        <input id="email" type="email"><br><br>
+
+        <label>Address:</label>
+        <input id="address" type="text" required><br><br>
+
+        <label>Pincode:</label>
+        <input id="pincode" type="number"><br><br>
+
+        <div class="input">
+            <label>City details:</label> 
+            <input id="city" class="expand" type="text" placeholder="City" required>
+            <input id="state" class="expand" type="text" placeholder="State" required>
+        </div>
+        <br><br>
+     
+        <label>Phone Number:</label>
+        <input id="phoneNumber" type="number" required><br><br>
+        <label>Birth Date:</label>
+        <input id="birthDate" type="month" required><br><br>
+
+        <label>Membership Type:</label>
+        <input type="radio" id="opt1" name="std">
+        <label>Standard</label>
+        <input type="radio" id="opt2" name="std">
+        <label>Premium</label>
+        <input type="radio" id="opt3" name="std">
+        <label>Ultimate</label><br><br>
+    
+        <label>How do you know us? :</label>
+        <input id="chk1" type="checkbox">
+        <label>A Friend or colleague</label>
+        <input id="chk2" type="checkbox">
+        <label>Google</label>
+        <input id="chk3" type="checkbox">
+        <label>Blog Post</label>
+        <input id="chk4" type="checkbox">
+        <label>News Article</label><br><br>
+
+        <label>Way to contact</label>
+        <select id="contactMethod">
+            <option>Phone</option>
+            <option>Email</option>
+        </select><br><br>
+
+        <input id="btn" type="submit" value="Submit">
+    </form>
+</div>
+    <script>
+        function validate() {
+            var firstName = document.getElementById("firstName").value;
+            var lastName = document.getElementById("lastName").value;
+            var email = document.getElementById("email").value;
+            var address = document.getElementById("address").value;
+            var pincode = document.getElementById("pincode").value;
+            var city = document.getElementById("city").value;
+            var state = document.getElementById("state").value;
+            var phoneNumber = document.getElementById("phoneNumber").value;
+            var birthDate = document.getElementById("birthDate").value;
+
+            var checkName = /^[a-zA-Z]+$/;
+            if (!firstName.match(checkName) || !lastName.match(checkName)) {
+                alert("Please enter alphabets only for first and last name.");
+                return false;
+            }
+
+            var checkpin = /^\d{6}$/;
+            if (!pincode.match(checkpin)) {
+                alert("Pincode should contain exactly 6 digits.");
+                return false;
+            }
+
+            var checknum = /^\d{10}$/;
+            if (!phoneNumber.match(checknum)) {
+                alert("Phone number should contain exactly 10 digits.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+</html>
